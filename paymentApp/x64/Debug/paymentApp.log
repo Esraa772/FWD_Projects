@@ -1,0 +1,4 @@
+﻿  test_card.c
+D:\Mentorship\FWD_Projects\paymentApp\Card\test_card.c(21,2): warning C4013: 'memset' undefined; assuming extern returning int
+D:\Mentorship\FWD_Projects\paymentApp\Card\test_card.c(24,8): warning C4013: 'gets' undefined; assuming extern returning int
+  paymentApp.vcxproj -> D:\Mentorship\FWD_Projects\paymentApp\x64\Debug\paymentApp.exe
