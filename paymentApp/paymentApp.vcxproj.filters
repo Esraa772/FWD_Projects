@@ -21,9 +21,18 @@
     <ClCompile Include="Card\test_card.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Terminal\terminal.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Terminal\test_terminal.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Card\card.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Terminal\terminal.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

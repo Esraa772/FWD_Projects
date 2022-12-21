@@ -1,3 +1,6 @@
-﻿  test_card.c
-D:\Mentorship\FWD_Projects\paymentApp\Card\test_card.c(20,2): warning C4013: 'memset' undefined; assuming extern returning int
+﻿  test_terminal.c
+D:\Mentorship\FWD_Projects\paymentApp\Terminal\test_terminal.c(184,31): warning C4305: '=': truncation from 'double' to 'float'
+D:\Mentorship\FWD_Projects\paymentApp\Terminal\test_terminal.c(198,31): warning C4305: '=': truncation from 'double' to 'float'
+D:\Mentorship\FWD_Projects\paymentApp\Terminal\test_terminal.c(221,26): warning C4305: '=': truncation from 'double' to 'float'
+D:\Mentorship\FWD_Projects\paymentApp\Terminal\test_terminal.c(246,24): warning C4305: '=': truncation from 'double' to 'float'
   paymentApp.vcxproj -> D:\Mentorship\FWD_Projects\paymentApp\x64\Debug\paymentApp.exe

@@ -47,44 +47,11 @@ EN_cardError_t getCardExpiryDate(ST_cardData_t* cardData)
 	return funcState;
 }
 
-static void remove_spaces(uint8_t* primaryAccountNumber) {
-	uint8_t* cleanPrimaryAccountNumber = primaryAccountNumber;
-	do {
-		while (*cleanPrimaryAccountNumber == ' ') {
-			++cleanPrimaryAccountNumber;
-		}
-	} while (*primaryAccountNumber++ = *cleanPrimaryAccountNumber++);
-}
-
-static EN_cardError_t luhnAlgorithm(uint8_t* panNumber, uint8_t len)
-{
-	EN_cardError_t funcState = CARD_OK;
-	uint8_t charCount = 0;
-	uint32_t sumOfPan = 0;
-	for (charCount; charCount < len; charCount+=2)
-	{
-		panNumber[charCount] -= '0';
-		panNumber[charCount + 1] -= '0';
-
-		(panNumber[charCount] * 2) > 9 ? (panNumber[charCount] = (panNumber[charCount] * 2) - 9): (panNumber[charCount] *= 2);
-		sumOfPan += (uint32_t)( panNumber[charCount] + panNumber[charCount+1]);
-	}
-	
-	if ((sumOfPan % 10) != 0)
-	{
-		funcState = WRONG_PAN;
-	}
-
-	return funcState;
-}
-
 EN_cardError_t getCardPAN(ST_cardData_t* cardData)
 {
 	EN_cardError_t funcState = CARD_OK;
 	uint8_t length = 0;
 	(void)gets(cardData->primaryAccountNumber);
-
-	remove_spaces(cardData->primaryAccountNumber);
 
 	length = strlen(cardData->primaryAccountNumber);
 
@@ -93,9 +60,5 @@ EN_cardError_t getCardPAN(ST_cardData_t* cardData)
 		funcState = WRONG_PAN;
 	}
 
-	if (funcState != WRONG_PAN)
-	{
-		funcState = luhnAlgorithm(cardData->primaryAccountNumber, length);
-	}
 	return funcState;
 }

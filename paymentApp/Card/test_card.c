@@ -196,24 +196,11 @@ void getCardPANTest(void)
 	printf("Actual Results:");
 	actualResults == CARD_OK ? printf("CARD_OK\n") : printf("WRONG_PAN\n");
 
-	/********************************************* Test Case 5 *********************************/
-	puts("===================================== Test Case 5 ========================================");
-	printf("Test Case 5: invalid card PAN number\n");
-
-	printf("Input Data: ");
-	actualResults = getCardPAN(&card);
-	memset(card.primaryAccountNumber, '\0', sizeof(card.primaryAccountNumber));
-
-	printf("Expected Results: WRONG_PAN\n");
-
-	printf("Actual Results:");
-	actualResults == CARD_OK ? printf("CARD_OK\n") : printf("WRONG_PAN\n");
-
 }
 
-void main(void)
-{
-	//getCardHolderNameTest();
-	//getCardExpiryDateTest();
-	getCardPANTest();
-}
+//void main(void)
+//{
+//	getCardHolderNameTest();
+//	getCardExpiryDateTest();
+//	getCardPANTest();
+//}
