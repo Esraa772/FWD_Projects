@@ -128,13 +128,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Card\card.c" />
-    <ClCompile Include="Card\test_card.c" />
+    <ClCompile Include="Test\test_card\test_card.c" />
+    <ClCompile Include="Server\server.c" />
+    <ClCompile Include="Test\test_server\test_server.c" />
     <ClCompile Include="Terminal\terminal.c" />
-    <ClCompile Include="Terminal\test_terminal.c" />
+    <ClCompile Include="Test\test_terminal\test_terminal.c" />
+    <ClCompile Include="Test\unit_test.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Card\card.h" />
+    <ClInclude Include="Server\server.h" />
     <ClInclude Include="Terminal\terminal.h" />
+    <ClInclude Include="Test\test_card\test_card.h" />
+    <ClInclude Include="Test\test_server\test_server.h" />
+    <ClInclude Include="Test\test_terminal\test_terminal.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
