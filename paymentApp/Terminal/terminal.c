@@ -73,23 +73,29 @@ EN_terminalError_t isValidCardPAN(ST_cardData_t* cardData)
 	uint8_t charCount = 0;
 	uint32_t sumOfPan = 0;
 	uint8_t length;
-
-	remove_spaces(cardData->primaryAccountNumber);
-
-	length = strlen(cardData->primaryAccountNumber);
-
-	for (charCount; charCount < length; charCount += 2)
-	{
-		cardData->primaryAccountNumber[charCount] -= '0';
-		cardData->primaryAccountNumber[charCount + 1] -= '0';
-
-		(cardData->primaryAccountNumber[charCount] * 2) > 9 ? (cardData->primaryAccountNumber[charCount] = (cardData->primaryAccountNumber[charCount] * 2) - 9) : (cardData->primaryAccountNumber[charCount] *= 2);
-		sumOfPan += (uint32_t)(cardData->primaryAccountNumber[charCount] + cardData->primaryAccountNumber[charCount + 1]);
-	}
-
-	if ((sumOfPan % 10) != 0)
+	if (cardData->primaryAccountNumber[0] == NULL)
 	{
 		funcState = INVALID_CARD;
+	}
+	else
+	{
+		remove_spaces(cardData->primaryAccountNumber);
+
+		length = strlen(cardData->primaryAccountNumber);
+
+		for (charCount; charCount < length; charCount += 2)
+		{
+			cardData->primaryAccountNumber[charCount] -= '0';
+			cardData->primaryAccountNumber[charCount + 1] -= '0';
+
+			(cardData->primaryAccountNumber[charCount] * 2) > 9 ? (cardData->primaryAccountNumber[charCount] = (cardData->primaryAccountNumber[charCount] * 2) - 9) : (cardData->primaryAccountNumber[charCount] *= 2);
+			sumOfPan += (uint32_t)(cardData->primaryAccountNumber[charCount] + cardData->primaryAccountNumber[charCount + 1]);
+		}
+
+		if ((sumOfPan % 10) != 0 && sumOfPan != 0)
+		{
+			funcState = INVALID_CARD;
+		}
 	}
 
 	return funcState;

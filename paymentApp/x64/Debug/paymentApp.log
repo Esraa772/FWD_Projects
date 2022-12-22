@@ -1,6 +1,7 @@
-﻿  test_terminal.c
-D:\Mentorship\FWD_Projects\paymentApp\Terminal\test_terminal.c(184,31): warning C4305: '=': truncation from 'double' to 'float'
-D:\Mentorship\FWD_Projects\paymentApp\Terminal\test_terminal.c(198,31): warning C4305: '=': truncation from 'double' to 'float'
-D:\Mentorship\FWD_Projects\paymentApp\Terminal\test_terminal.c(221,26): warning C4305: '=': truncation from 'double' to 'float'
-D:\Mentorship\FWD_Projects\paymentApp\Terminal\test_terminal.c(246,24): warning C4305: '=': truncation from 'double' to 'float'
+﻿  terminal.c
+D:\Mentorship\FWD_Projects\paymentApp\Terminal\terminal.c(14,8): warning C4013: 'gets' undefined; assuming extern returning int
+D:\Mentorship\FWD_Projects\paymentApp\Terminal\terminal.c(15,11): warning C4267: '=': conversion from 'size_t' to 'uint8_t', possible loss of data
+D:\Mentorship\FWD_Projects\paymentApp\Terminal\terminal.c(33,14): warning C4013: 'isdigit' undefined; assuming extern returning int
+D:\Mentorship\FWD_Projects\paymentApp\Terminal\terminal.c(76,47): warning C4047: '==': 'int' differs in levels of indirection from 'void *'
+D:\Mentorship\FWD_Projects\paymentApp\Terminal\terminal.c(84,12): warning C4267: '=': conversion from 'size_t' to 'uint8_t', possible loss of data
   paymentApp.vcxproj -> D:\Mentorship\FWD_Projects\paymentApp\x64\Debug\paymentApp.exe
