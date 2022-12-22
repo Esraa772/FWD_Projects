@@ -22,6 +22,6 @@ void main(void)
 
 	//setMaxAmountTest();
 
-	//isValidCardPANTest();
+	isValidCardPANTest();
 
 }

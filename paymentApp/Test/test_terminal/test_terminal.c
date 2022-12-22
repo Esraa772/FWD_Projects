@@ -276,13 +276,13 @@ void isValidCardPANTest(void)
 
 	/********************************************* Test Case 2 *********************************/
 	puts("===================================== Test Case 2 ========================================");
-	printf("Test Case 2: Card PAN is a vlid Luhn number\n");
-
+	printf("Test Case 2: Card PAN is a valid Luhn number\n");
+	memset(cardData.primaryAccountNumber, '\0', sizeof(cardData.primaryAccountNumber));
 	printf("Input Data: ");
 	actualResults = getCardPAN(&cardData);
 
 	actualResults = isValidCardPAN(&cardData);
-	printf("Expected Results: INVALID_CARD\n");
+	printf("Expected Results: TERMINAL_OK\n");
 
 	printf("Actual Results:");
 	actualResults == TERMINAL_OK ? printf("TERMINAL_OK\n") : printf("INVALID_CARD\n");
