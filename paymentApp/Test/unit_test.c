@@ -3,6 +3,9 @@
 #include "../Card/card.h"
 #include "../Terminal/terminal.h"
 #include "../Server/server.h"
+#include "test_card/test_card.h"
+#include "test_terminal/test_terminal.h"
+#include "test_server/test_server.h"
 
 void main(void)
 {
@@ -22,6 +25,15 @@ void main(void)
 
 	//setMaxAmountTest();
 
-	isValidCardPANTest();
+	//isValidCardPANTest();
+	
+	//isValidAccountTest();
+	
+	//isBlockedAccountTest();
 
+	//isAmountAvailableTest();
+
+	//listSavedTransactionsTest();
+
+	saveTransactionTest();
 }

@@ -1,7 +1,8 @@
-﻿  terminal.c
-D:\Mentorship\FWD_Projects\paymentApp\Terminal\terminal.c(14,8): warning C4013: 'gets' undefined; assuming extern returning int
-D:\Mentorship\FWD_Projects\paymentApp\Terminal\terminal.c(15,11): warning C4267: '=': conversion from 'size_t' to 'uint8_t', possible loss of data
-D:\Mentorship\FWD_Projects\paymentApp\Terminal\terminal.c(33,14): warning C4013: 'isdigit' undefined; assuming extern returning int
-D:\Mentorship\FWD_Projects\paymentApp\Terminal\terminal.c(76,47): warning C4047: '==': 'int' differs in levels of indirection from 'void *'
-D:\Mentorship\FWD_Projects\paymentApp\Terminal\terminal.c(84,12): warning C4267: '=': conversion from 'size_t' to 'uint8_t', possible loss of data
+﻿  test_server.c
+D:\Mentorship\FWD_Projects\paymentApp\Test\test_server\test_server.c(28,2): warning C4013: 'strcpy_s' undefined; assuming extern returning int
+D:\Mentorship\FWD_Projects\paymentApp\Test\test_server\test_server.c(111,30): warning C4305: '=': truncation from 'double' to 'float'
+D:\Mentorship\FWD_Projects\paymentApp\Test\test_server\test_server.c(99,18): warning C4101: 'accountRefrence': unreferenced local variable
+D:\Mentorship\FWD_Projects\paymentApp\Test\test_server\test_server.c(213,3): warning C4013: 'getch' undefined; assuming extern returning int
+D:\Mentorship\FWD_Projects\paymentApp\Test\test_server\test_server.c(163,4): warning C4047: 'initializing': 'uint8_t' differs in levels of indirection from 'void *'
+D:\Mentorship\FWD_Projects\paymentApp\Test\test_server\test_server.c(166,4): warning C4047: 'initializing': 'uint8_t' differs in levels of indirection from 'void *'
   paymentApp.vcxproj -> D:\Mentorship\FWD_Projects\paymentApp\x64\Debug\paymentApp.exe
