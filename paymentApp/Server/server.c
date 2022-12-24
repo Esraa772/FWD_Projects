@@ -7,37 +7,16 @@
 
 ST_accountsDB_t accountsDB[]=
 {
-	{2000.0,   RUNNING, "8989374615436851"},
-	{100000.0, RUNNING, "0000000000007443"},
-	{11.0,     RUNNING, "0000000000053363"},
-	{1500.0,   RUNNING, "0000000208042010"}, 
-	{
-		.balance = 1000000.0,
-		.state = RUNNING,
-		.primaryAccountNumber = "4130050008020406"
-	},
-	{
-		.balance = 1000.0,
-		.state = RUNNING,
-		.primaryAccountNumber = "6500020049010200"
-	},
-	{
-		.balance = 765000.99,
-		.state = RUNNING,
-		.primaryAccountNumber = "4738744301000000"
-	},
-	{
-		.balance = 80000.0,
-		.state = BLOCKED,
-		.primaryAccountNumber = "5807007076043875"
-	},
-	{
-		.balance = 4600000.0,
-		.state = RUNNING,
-		.primaryAccountNumber = "0776440005050406"
-	},
+	{100000.0,  RUNNING, "0000000000007443"},
+	{11.0,      RUNNING, "0000000000053363"},
+	{1500.0,    RUNNING, "0000000208042010"}, 
+	{1000000.0, RUNNING, "4130050008020406"},
+	{1000.0,    RUNNING, "6500020049010200"},
+	{765000.99, RUNNING, "4738744301000000"},
+	{80000.0,   BLOCKED, "5807007076043875"},
+	{4600000.0, RUNNING, "0776440005050406"},
 	{7500000.0, RUNNING, "4738526401000000"},
-	{600000.0,BLOCKED, "4738398603000000"},
+	{600000.0,  BLOCKED, "4738398603000000"},
 };
 
 ST_transaction_t transactionsDB[] =
@@ -53,15 +32,11 @@ EN_serverError_t isValidAccount(ST_cardData_t* cardData, ST_accountsDB_t* accoun
 	EN_serverError_t funcState = ACCOUNT_NOT_FOUND;
 	uint16_t DBsize = sizeof(accountsDB)/sizeof(accountsDB[0]);
 
-
-	printf("%s\n", cardData->primaryAccountNumber);
-
 	uint16_t loopCounter;
 	for (loopCounter = 0; loopCounter < DBsize; loopCounter++)
 	{
 		if (0 == strcmp(accountsDB[loopCounter].primaryAccountNumber, cardData->primaryAccountNumber))
 		{
-			printf("hereeeeeeeeee!");
 			accountRefrence->balance = accountsDB[loopCounter].balance;
 			strcpy_s(accountRefrence->primaryAccountNumber,sizeof(accountsDB[loopCounter].primaryAccountNumber), accountsDB[loopCounter].primaryAccountNumber);
 			accountRefrence->state = accountsDB[loopCounter].state;
@@ -180,7 +155,6 @@ EN_transState_t recieveTransactionData(ST_transaction_t* transData)
 	uint8_t loopCounter;
 	uint8_t DBsize = sizeof(accountsDB) / sizeof(accountsDB[0]);
 
-	printf("%d \n",DBsize);
 	transData->transState = APPROVED;
 
 	if (APPROVED == transData->transState && ACCOUNT_NOT_FOUND == isValidAccount(&transData->cardHolderData, &accountRefrence))
@@ -192,7 +166,6 @@ EN_transState_t recieveTransactionData(ST_transaction_t* transData)
 		transData->transState = DECLINED_STOLEN_CARD;
 	}
 
-	printf("%f \n", accountsDB[1].balance);
 	if (APPROVED == transData->transState && LOW_BALANCE == isAmountAvailable(&transData->terminalData, &accountRefrence))
 	{
 		transData->transState = DECLINED_INSUFFECIENT_FUND;
