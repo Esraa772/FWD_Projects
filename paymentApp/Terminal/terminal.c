@@ -67,39 +67,40 @@ static void remove_spaces(uint8_t* primaryAccountNumber) {
 	} while (*primaryAccountNumber++ = *cleanPrimaryAccountNumber++);
 }
 
-EN_terminalError_t isValidCardPAN(ST_cardData_t* cardData)
-{
-	EN_terminalError_t funcState = TERMINAL_OK;
-	uint8_t charCount = 0;
-	uint32_t sumOfPan = 0;
-	uint8_t length;
-	if (cardData->primaryAccountNumber[0] == NULL)
-	{
-		funcState = INVALID_CARD;
-	}
-	else
-	{
-		remove_spaces(cardData->primaryAccountNumber);
-
-		length = strlen(cardData->primaryAccountNumber);
-
-		for (charCount; charCount < length; charCount += 2)
-		{
-			cardData->primaryAccountNumber[charCount] -= '0';
-			cardData->primaryAccountNumber[charCount + 1] -= '0';
-
-			(cardData->primaryAccountNumber[charCount] * 2) > 9 ? (cardData->primaryAccountNumber[charCount] = (cardData->primaryAccountNumber[charCount] * 2) - 9) : (cardData->primaryAccountNumber[charCount] *= 2);
-			sumOfPan += (uint32_t)(cardData->primaryAccountNumber[charCount] + cardData->primaryAccountNumber[charCount + 1]);
-		}
-
-		if ((sumOfPan % 10) != 0 && sumOfPan != 0)
-		{
-			funcState = INVALID_CARD;
-		}
-	}
-
-	return funcState;
-}
+//EN_terminalError_t isValidCardPAN(ST_cardData_t* cardData)
+//{
+//	EN_terminalError_t funcState = TERMINAL_OK;
+//	uint8_t charCount = 0;
+//	uint8_t tempData;
+//	uint32_t sumOfPan = 0;
+//	uint8_t length;
+//	if (cardData->primaryAccountNumber == NULL)
+//	{
+//		funcState = INVALID_CARD;
+//	}
+//	else
+//	{
+//		remove_spaces(cardData->primaryAccountNumber);
+//
+//		length = strlen(cardData->primaryAccountNumber);
+//
+//		for (charCount; charCount < length; charCount += 2)
+//		{
+//			tempData = cardData->primaryAccountNumber[charCount] - '0';
+//			
+//			((tempData * 2) > 9) ? ((tempData *= 2) - 9) : (tempData *= 2);
+//
+//			sumOfPan += (uint32_t)(tempData + (cardData->primaryAccountNumber[charCount + 1] - '0'));
+//		}
+//
+//		if ((sumOfPan % 10) != 0 && sumOfPan != 0)
+//		{
+//			funcState = INVALID_CARD;
+//		}
+//	}
+//
+//	return funcState;
+//}
 
 EN_terminalError_t isCardExpired(ST_cardData_t* cardData, ST_terminalData_t* termData)
 {

@@ -19,12 +19,7 @@ ST_accountsDB_t accountsDB[]=
 	{600000.0,  BLOCKED, "4738398603000000"},
 };
 
-ST_transaction_t transactionsDB[] =
-{
-	{
-		NULL
-	},
-};
+ST_transaction_t transactionsDB[] = { 0 };
 
 
 EN_serverError_t isValidAccount(ST_cardData_t* cardData, ST_accountsDB_t* accountRefrence)
@@ -37,12 +32,15 @@ EN_serverError_t isValidAccount(ST_cardData_t* cardData, ST_accountsDB_t* accoun
 	{
 		if (0 == strcmp(accountsDB[loopCounter].primaryAccountNumber, cardData->primaryAccountNumber))
 		{
-			accountRefrence->balance = accountsDB[loopCounter].balance;
-			strcpy_s(accountRefrence->primaryAccountNumber,sizeof(accountsDB[loopCounter].primaryAccountNumber), accountsDB[loopCounter].primaryAccountNumber);
-			accountRefrence->state = accountsDB[loopCounter].state;
 			funcState = SERVER_OK;
 			break;
 		}
+	}
+
+	if (SERVER_OK == funcState) {
+		accountRefrence->balance = accountsDB[loopCounter].balance;
+		strcpy_s(accountRefrence->primaryAccountNumber, sizeof(accountsDB[loopCounter].primaryAccountNumber), accountsDB[loopCounter].primaryAccountNumber);
+		accountRefrence->state = accountsDB[loopCounter].state;
 	}
 	return funcState;
 }
@@ -61,8 +59,6 @@ EN_serverError_t isAmountAvailable(ST_terminalData_t* termData, ST_accountsDB_t*
 {
 	EN_serverError_t funcState = SERVER_OK;
 
-	printf("%f %f\n", termData->transAmount, accountRefrence->balance);
-
 	if (termData->transAmount > accountRefrence->balance)
 	{
 		funcState = LOW_BALANCE;
@@ -70,13 +66,13 @@ EN_serverError_t isAmountAvailable(ST_terminalData_t* termData, ST_accountsDB_t*
 	return funcState;
 }
 
+static uint16_t storedDBSize;
 EN_serverError_t saveTransaction(ST_transaction_t* transData)
 {
 	EN_serverError_t funcState = SERVER_OK;
-	static uint32_t transactionSequenceNumber;
-	static uint16_t storedDBSize;
+	static uint32_t transactionSequenceNumber = 1;
 
-	transData->transactionSequenceNumber = (++transactionSequenceNumber);
+	transData->transactionSequenceNumber = transactionSequenceNumber++;
 	if (storedDBSize > 254)
 	{
 		funcState = SAVING_FAILED;
@@ -96,7 +92,6 @@ EN_serverError_t saveTransaction(ST_transaction_t* transData)
 		transactionsDB[storedDBSize].terminalData.maxTransAmount = transData->terminalData.maxTransAmount;
 
 		storedDBSize++;
-
 		listSavedTransactions();
 	}
 
@@ -105,18 +100,20 @@ EN_serverError_t saveTransaction(ST_transaction_t* transData)
 
 void listSavedTransactions(void)
 {
-	uint16_t DBsize;
+	//uint16_t DBsize;
 	uint16_t loopCounter;
-	DBsize = sizeof(transactionsDB) / sizeof(transactionsDB[0]);
+	//DBsize = sizeof(transactionsDB) / sizeof(transactionsDB[0]);
 
-	if (0 == DBsize)
+	if (0 == storedDBSize)
 	{
+		//DBsize = 0;
 		printf("No saved transactions to list!\n");
+		return;
 	}
-	for (loopCounter = 0; loopCounter < DBsize; loopCounter++)
+	for (loopCounter = 0; loopCounter < storedDBSize; loopCounter++)
 	{
 		puts("#########################");
-		printf("Transaction Sequence Number: %d\n", transactionsDB[loopCounter].transactionSequenceNumber);
+		printf("Transaction Sequence Number: %d\n", transactionsDB[loopCounter].transactionSequenceNumber +1);
 		printf("Transaction Date: %s\n", transactionsDB[loopCounter].terminalData.transactionDate);
 		printf("Transaction Amount: %f\n", transactionsDB[loopCounter].terminalData.transAmount);
 		
@@ -157,25 +154,22 @@ EN_transState_t recieveTransactionData(ST_transaction_t* transData)
 
 	transData->transState = APPROVED;
 
-	if (APPROVED == transData->transState && ACCOUNT_NOT_FOUND == isValidAccount(&transData->cardHolderData, &accountRefrence))
+	if (APPROVED == transData->transState && (ACCOUNT_NOT_FOUND == isValidAccount(&transData->cardHolderData, &accountRefrence)))
 	{
 		transData->transState = FRAUD_CARD;
 	}
-	if (APPROVED == transData->transState && BLOCKED_ACCOUNT == isBlockedAccount(&accountRefrence))
+	if (APPROVED == transData->transState && (BLOCKED_ACCOUNT == isBlockedAccount(&accountRefrence)))
 	{
 		transData->transState = DECLINED_STOLEN_CARD;
 	}
-
-	if (APPROVED == transData->transState && LOW_BALANCE == isAmountAvailable(&transData->terminalData, &accountRefrence))
+	if (APPROVED == transData->transState && (LOW_BALANCE == isAmountAvailable(&transData->terminalData, &accountRefrence)))
 	{
 		transData->transState = DECLINED_INSUFFECIENT_FUND;
 	}
-
 	if (APPROVED == transData->transState && (SAVING_FAILED ==  saveTransaction(transData)))
 	{
 		transData->transState = INTERNAL_SERVER_ERROR;
 	}
-
 	if (APPROVED == transData->transState)
 	{
 		accountRefrence.balance -= transData->terminalData.transAmount;
