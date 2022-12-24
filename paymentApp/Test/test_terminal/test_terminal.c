@@ -1,6 +1,7 @@
 #include <stdint.h>
 #include <stdio.h>
-#include <string.h>
+
+#include "test_terminal.h"
 #include "../../Card/card.h"
 #include "../../Terminal/terminal.h"
 
