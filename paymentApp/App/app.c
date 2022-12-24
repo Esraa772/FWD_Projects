@@ -6,7 +6,6 @@
 #include "../Server/server.h"
 #include "app.h"
 
-extern ST_accountsDB_t accountsDB[255];
 
 void appStart(void)
 {
@@ -16,7 +15,7 @@ void appStart(void)
 	ST_transaction_t transData;
 	EN_transState_t transState;
 	
-	float maxAmount = 100.0;
+	float maxAmount = 1000.0;
 
 	setMaxAmount(&transData.terminalData, maxAmount);
 
@@ -73,14 +72,16 @@ void appStart(void)
 		return;
 	}
 
-	termState = isValidCardPAN(&transData.cardHolderData);
+	/*termState = isValidCardPAN(&transData.cardHolderData);
 	if (INVALID_CARD == termState)
 	{
 		printf("Fraud card Declined! invalid card the PAN number is not a real card number\n");
 		return;
-	}
+	}*/
 	
-	transState = recieveTransactionData (&transData);
+	/*printf("%s \n", transData.cardHolderData.primaryAccountNumber);*/
+
+	transState = recieveTransactionData(&transData);
 
 	if (FRAUD_CARD == transState)
 	{

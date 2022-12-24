@@ -12,7 +12,7 @@ void isBelowMaxAmountTest(void);
 
 void setMaxAmountTest(void);
 
-void isValidCardPANTest(void);
+//void isValidCardPANTest(void);
 
 #endif // ! TEST_TERMINAL_H
 

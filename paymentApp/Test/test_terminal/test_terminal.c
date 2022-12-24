@@ -253,39 +253,39 @@ void setMaxAmountTest(void)
 	actualResults == TERMINAL_OK ? printf("TERMINAL_OK\n") : printf("EXCEED_MAX_AMOUNTs\n");
 }
 
-void isValidCardPANTest(void)
-{
-	ST_cardData_t cardData;
-	EN_terminalError_t actualResults;
-
-	printf("Tester Namer: Esraa Abdelnaby\n");
-	printf("Function Name: isValidCardPAN\n");
-	puts("");
-
-	/********************************************* Test Case 1 *********************************/
-	puts("===================================== Test Case 1 ========================================");
-	printf("Test Case 1: Card PAN is not Luhn number\n");
-
-	printf("Input Data: ");
-	actualResults = getCardPAN(&cardData);
-
-	actualResults = isValidCardPAN(&cardData);
-	printf("Expected Results: INVALID_CARD\n");
-
-	printf("Actual Results:");
-	actualResults == TERMINAL_OK ? printf("TERMINAL_OK\n") : printf("INVALID_CARD\n");
-
-	/********************************************* Test Case 2 *********************************/
-	puts("===================================== Test Case 2 ========================================");
-	printf("Test Case 2: Card PAN is a valid Luhn number\n");
-	memset(cardData.primaryAccountNumber, '\0', sizeof(cardData.primaryAccountNumber));
-	printf("Input Data: ");
-	actualResults = getCardPAN(&cardData);
-
-	actualResults = isValidCardPAN(&cardData);
-	printf("Expected Results: TERMINAL_OK\n");
-
-	printf("Actual Results:");
-	actualResults == TERMINAL_OK ? printf("TERMINAL_OK\n") : printf("INVALID_CARD\n");
-
-}
+//void isValidCardPANTest(void)
+//{
+//	ST_cardData_t cardData;
+//	EN_terminalError_t actualResults;
+//
+//	printf("Tester Namer: Esraa Abdelnaby\n");
+//	printf("Function Name: isValidCardPAN\n");
+//	puts("");
+//
+//	/********************************************* Test Case 1 *********************************/
+//	puts("===================================== Test Case 1 ========================================");
+//	printf("Test Case 1: Card PAN is not Luhn number\n");
+//
+//	printf("Input Data: ");
+//	actualResults = getCardPAN(&cardData);
+//
+//	actualResults = isValidCardPAN(&cardData);
+//	printf("Expected Results: INVALID_CARD\n");
+//
+//	printf("Actual Results:");
+//	actualResults == TERMINAL_OK ? printf("TERMINAL_OK\n") : printf("INVALID_CARD\n");
+//
+//	/********************************************* Test Case 2 *********************************/
+//	puts("===================================== Test Case 2 ========================================");
+//	printf("Test Case 2: Card PAN is a valid Luhn number\n");
+//	memset(cardData.primaryAccountNumber, '\0', sizeof(cardData.primaryAccountNumber));
+//	printf("Input Data: ");
+//	actualResults = getCardPAN(&cardData);
+//
+//	actualResults = isValidCardPAN(&cardData);
+//	printf("Expected Results: TERMINAL_OK\n");
+//
+//	printf("Actual Results:");
+//	actualResults == TERMINAL_OK ? printf("TERMINAL_OK\n") : printf("INVALID_CARD\n");
+//
+//}
