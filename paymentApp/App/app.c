@@ -16,7 +16,7 @@ void appStart(void)
 	ST_transaction_t transData;
 	EN_transState_t transState;
 	
-	float maxAmount = 10.0;
+	float maxAmount = 100.0;
 
 	setMaxAmount(&transData.terminalData, maxAmount);
 
@@ -81,7 +81,7 @@ void appStart(void)
 	}
 	
 	transState = recieveTransactionData (&transData);
-	printf("%s\n", accountsDB[1].primaryAccountNumber);
+
 	if (FRAUD_CARD == transState)
 	{
 		printf("Declined! Account not found!\n");

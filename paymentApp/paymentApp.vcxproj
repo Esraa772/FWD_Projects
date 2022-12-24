@@ -140,6 +140,7 @@
   <ItemGroup>
     <ClInclude Include="App\app.h" />
     <ClInclude Include="Card\card.h" />
+    <ClInclude Include="DB.h" />
     <ClInclude Include="Server\server.h" />
     <ClInclude Include="Terminal\terminal.h" />
     <ClInclude Include="Test\test_card\test_card.h" />
