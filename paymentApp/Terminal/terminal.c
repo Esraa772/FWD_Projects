@@ -105,12 +105,11 @@ EN_terminalError_t isCardExpired(ST_cardData_t* cardData, ST_terminalData_t* ter
 {
 	EN_terminalError_t funcState = TERMINAL_OK;
 	uint8_t cradYear = ((cardData->cardExpirationDate[3] - '0') * 10) + (cardData->cardExpirationDate[4] - '0');
-	uint8_t termYear = ((termData->transactionDate[8] - '0') * 10) + (termData->transactionDate[9] - '0');
-
+	uint8_t termYear = ((termData->transactionDate[8] - '0') * 10) + (termData->transactionDate[9]-'0');
 	uint8_t cradMonth = ((cardData->cardExpirationDate[0] - '0') * 10) + (cardData->cardExpirationDate[1] - '0');
 	uint8_t termMonth = ((termData->transactionDate[3] - '0') * 10) + (termData->transactionDate[4] - '0');
 
-	if (cradYear < termYear || cradMonth < termMonth)
+	if (cradYear < termYear || (cradYear == termYear && cradMonth < termMonth))
 	{
 		funcState = EXPIRED_CARD;
 	}
