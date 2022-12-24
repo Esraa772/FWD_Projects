@@ -36,4 +36,6 @@ void main(void)
 	//listSavedTransactionsTest();
 
 	saveTransactionTest();
+
+	//recieveTransactionDataTest();
 }
