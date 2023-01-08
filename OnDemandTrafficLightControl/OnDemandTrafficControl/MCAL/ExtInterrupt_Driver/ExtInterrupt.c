@@ -5,13 +5,15 @@
  *      Author: Esraa Abdelnaby
  */
 
-#include "../Service/Std_Types.h"
-#include "../Service/Bit_Maths.h"
-#include "../Service/Bit_Mask.h"
-#include "../Service/ATmega32_Registers.h"
+#include "../ExtInterrupt_Driver/ExtInterrupt.h"
+
+#include "../../Service/Lib/Std_Types.h"
+#include "../../Service/Lib/Bit_Maths.h"
+#include "../../Service/Lib/Bit_Mask.h"
+#include "../../Service/Lib/ATmega32_Registers.h"
 #include "avr/interrupt.h"
-#include "ExtInt_cfg.h"
-#include "ExtInterrupt.h"
+
+#include "../ExtInterrupt_Driver/ExtInt_cfg.h"
 
 
 #define INT_0_CLEAR_MASK		BIT0_CLEAR & BIT1_CLEAR

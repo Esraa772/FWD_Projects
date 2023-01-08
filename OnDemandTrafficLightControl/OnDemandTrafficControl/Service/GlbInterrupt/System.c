@@ -4,9 +4,9 @@
  *  Created on: Jan 1, 2023
  *      Author: Esraa Abdelnaby
  */
-#include "Std_Types.h"
-#include "Bit_Maths.h"
-#include "Atmega32_Registers.h"
+#include "../Lib/Std_Types.h"
+#include "../Lib/Bit_Maths.h"
+#include "../Lib/Atmega32_Registers.h"
 
 
 void System_vidEnableGlobalInterrupt(void)

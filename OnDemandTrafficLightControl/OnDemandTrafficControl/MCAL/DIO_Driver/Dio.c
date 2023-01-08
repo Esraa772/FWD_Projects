@@ -6,9 +6,9 @@
  */
 
 
-#include "../Service/Std_Types.h"
-#include "../Service/Bit_Maths.h"
-#include "../Service/ATmega32_Registers.h"
+#include "../../Service/Lib/Std_Types.h"
+#include "../../Service/Lib/Bit_Maths.h"
+#include "../../Service/Lib/ATmega32_Registers.h"
 #include "Dio_priv.h"
 #include "Dio.h"
 

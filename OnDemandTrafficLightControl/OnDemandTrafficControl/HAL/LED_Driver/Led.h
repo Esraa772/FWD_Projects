@@ -15,10 +15,7 @@ typedef enum {
 	LED_enuID_3 ,
 	LED_enuID_4 ,
 	LED_enuID_5 ,
-	LED_enuID_6 ,
-	LED_enuID_7 ,
-	LED_enuID_8 ,
-	LED_enuID_9
+	LED_enuID_6
 }LED_enuLEDId;
 
 void LED_vidTurnOn(LED_enuLEDId Copy_enuLEDId);

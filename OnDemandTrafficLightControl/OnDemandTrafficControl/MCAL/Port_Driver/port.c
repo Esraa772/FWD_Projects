@@ -4,11 +4,11 @@
  *  Created on: Dec 30, 2022
  *      Author: Esraa Abdelnaby
  */
-#include "../Service/Std_Types.h"
-#include "../Service/Bit_Maths.h"
-#include "../Service/ATmega32_Registers.h"
-#include "../Port_Driver/Port_cfg.h"
-#include "../Port_Driver/Port_Priv.h"
+#include "../../Service/Lib/Std_Types.h"
+#include "../../Service/Lib/Bit_Maths.h"
+#include "../../Service/Lib/ATmega32_Registers.h"
+#include "Port_cfg.h"
+#include "Port_Priv.h"
 #include "Port.h"
 
 

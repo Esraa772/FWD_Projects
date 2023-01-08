@@ -12,7 +12,7 @@
 #define EXT_INT_ON				1
 
 #define DEF_STATE_INT_0		EXT_INT_ON
-#define DEF_STATE_INT_1		EXT_INT_ON
+#define DEF_STATE_INT_1		EXT_INT_OFF
 #define DEF_STATE_INT_2		EXT_INT_OFF
 
 

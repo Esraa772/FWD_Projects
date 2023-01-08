@@ -5,16 +5,15 @@
  *      Author: Esraa Abdelnaby
  */
 
-#include "../Service/Std_Types.h"
-#include "../Service/Bit_Maths.h"
-#include "../Service/ATmega32_Registers.h"
-#include "../DIO_Driver/Dio.h"
+#include "../../Service/Lib/Std_Types.h"
+#include "../../Service/Lib/Bit_Maths.h"
+#include "../../Service/Lib/ATmega32_Registers.h"
+#include "../../MCAL/DIO_Driver/Dio.h"
 #include "Led_cfg.h"
 #include "Led.h"
 
 void LED_vidTurnOn(LED_enuLEDId Copy_enuLEDId)
 {
-
 	switch(Copy_enuLEDId)
 	{
 	case LED_enuID_0:
@@ -37,15 +36,6 @@ void LED_vidTurnOn(LED_enuLEDId Copy_enuLEDId)
 		break;
 	case LED_enuID_6:
 		Dio_u8SetPinVal(LED_6_enuPin , DIO_u8HIGH);
-		break;
-	case LED_enuID_7:
-		Dio_u8SetPinVal(LED_7_enuPin , DIO_u8HIGH);
-		break;
-	case LED_enuID_8:
-		Dio_u8SetPinVal(LED_8_enuPin , DIO_u8HIGH);
-		break;
-	case LED_enuID_9:
-		Dio_u8SetPinVal(LED_9_enuPin , DIO_u8HIGH);
 		break;
 	default :
 		break;
@@ -77,15 +67,6 @@ void LED_vidTurnOff(LED_enuLEDId Copy_enuLEDId)
 		case LED_enuID_6:
 			Dio_u8SetPinVal(LED_6_enuPin , DIO_u8LOW);
 			break;
-		case LED_enuID_7:
-			Dio_u8SetPinVal(LED_7_enuPin , DIO_u8LOW);
-			break;
-		case LED_enuID_8:
-			Dio_u8SetPinVal(LED_8_enuPin , DIO_u8LOW);
-			break;
-		case LED_enuID_9:
-			Dio_u8SetPinVal(LED_9_enuPin , DIO_u8LOW);
-			break;
 		default :
 			break;
 		}
@@ -116,15 +97,6 @@ void LED_vidToggle(LED_enuLEDId Copy_enuLEDId)
 			break;
 		case LED_enuID_6:
 			Dio_u8TglPinVal(LED_6_enuPin);
-			break;
-		case LED_enuID_7:
-			Dio_u8TglPinVal(LED_7_enuPin);
-			break;
-		case LED_enuID_8:
-			Dio_u8TglPinVal(LED_8_enuPin);
-			break;
-		case LED_enuID_9:
-			Dio_u8TglPinVal(LED_9_enuPin);
 			break;
 		default :
 			break;

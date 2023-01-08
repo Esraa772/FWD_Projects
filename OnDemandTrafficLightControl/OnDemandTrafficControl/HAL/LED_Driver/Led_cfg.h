@@ -15,10 +15,7 @@ typedef enum{
 	LED_3_enuPin = DIO_u8PIN_3,
 	LED_4_enuPin = DIO_u8PIN_4,
 	LED_5_enuPin = DIO_u8PIN_5,
-	LED_6_enuPin = DIO_u8PIN_6,
-	LED_7_enuPin = DIO_u8PIN_7,
-	LED_8_enuPin = DIO_u8PIN_8,
-	LED_9_enuPin = DIO_u8PIN_9
+	LED_6_enuPin = DIO_u8PIN_6
 }LEDn_enuPinId;
 
 
