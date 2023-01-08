@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\PaymentProject",
+    "\\PaymentProject\\paymentApp"
   ],
+  "SelectedNode": "\\PaymentProject\\paymentApp\\paymentApp.vcxproj",
   "PreviewInSolutionExplorer": false
 }

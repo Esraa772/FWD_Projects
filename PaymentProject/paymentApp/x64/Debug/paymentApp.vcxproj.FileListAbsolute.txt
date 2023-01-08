@@ -1,0 +1,2 @@
+D:\Mentorship\FWD_Projects\paymentApp\x64\Debug\paymentApp.exe
+D:\Mentorship\FWD_Projects\PaymentProject\paymentApp\x64\Debug\paymentApp.exe
