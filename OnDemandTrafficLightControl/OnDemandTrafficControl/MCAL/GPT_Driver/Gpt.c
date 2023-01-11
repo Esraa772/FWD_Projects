@@ -5,10 +5,10 @@
  *      Author: Esraa Abdelnaby
  */
 
-#include "../../Service/Lib/Std_Types.h"
-#include "../../Service/Lib/ATmega32_Registers.h"
-#include "../../Service/Lib/Bit_Maths.h"
-#include "../../Service/Lib/Status.h"
+#include "../../Lib/Std_Types.h"
+#include "../../Lib/ATmega32_Registers.h"
+#include "../../Lib/Bit_Maths.h"
+#include "../../Lib/Status.h"
 #include <avr/interrupt.h>
 #include "Gpt.h"
 

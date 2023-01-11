@@ -28,7 +28,7 @@ typedef unsigned short int* pu16;
 typedef unsigned int* pu32;
 typedef unsigned long long int* pu64;
 
-typedef float* pf23;
+typedef float* pf32;
 typedef double* pf64;
 
 typedef signed char* ps8;

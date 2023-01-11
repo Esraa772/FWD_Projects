@@ -6,9 +6,9 @@
  */
 
 
-#include "../../Service/Lib/Std_Types.h"
-#include "../../Service/Lib/Bit_Maths.h"
-#include "../../Service/Lib/ATmega32_Registers.h"
+#include "../../Lib/Std_Types.h"
+#include "../../Lib/Bit_Maths.h"
+#include "../../Lib/ATmega32_Registers.h"
 #include "Dio_priv.h"
 #include "Dio.h"
 
@@ -78,35 +78,44 @@ u8 Dio_u8SetPinVal(u8 Copy_u8SwPinId, u8 Copy_u8SwPinVal)
 
 }
 
-u8 Dio_u8GetPinVal(u8 Copy_u8SwPinId)
+u8 Dio_u8GetPinVal(u8 Copy_u8SwPinId, u8 * Copy_u8PtrSwPinVal)
 {
 	u8 Loc_u8PortId;
 	u8 Loc_u8PinId;
-	u8 Loc_u8PinVal;
 
-	Loc_u8PortId = Copy_u8SwPinId / 8;
-	Loc_u8PinId = Copy_u8SwPinId % 8;
+	u8 Loc_u8FuncReturn = RT_SUCCESS;
 
-	switch(Loc_u8PortId)
+	if (Copy_u8SwPinId > 31)
 	{
-	case 0:
-		Loc_u8PinVal = GET_BIT(PINA.Byte,Loc_u8PinId);
-		break;
-	case 1:
-		Loc_u8PinVal = GET_BIT(PINB.Byte,Loc_u8PinId);
-		break;
-	case 2:
-		Loc_u8PinVal = GET_BIT(PINC.Byte,Loc_u8PinId);
-		break;
-	case 3:
-		Loc_u8PinVal = GET_BIT(PIND.Byte,Loc_u8PinId);
-		break;
+		Loc_u8FuncReturn = RT_ERROR;
+	}
+	if (RT_SUCCESS == Loc_u8FuncReturn)
+	{
+		Loc_u8PortId = Copy_u8SwPinId / 8;
+		Loc_u8PinId = Copy_u8SwPinId % 8;
 
-	default:
-		break;
+		switch(Loc_u8PortId)
+		{
+		case 0:
+			*Copy_u8PtrSwPinVal = GET_BIT(PINA.Byte,Loc_u8PinId);
+			break;
+		case 1:
+			*Copy_u8PtrSwPinVal = GET_BIT(PINB.Byte,Loc_u8PinId);
+			break;
+		case 2:
+			*Copy_u8PtrSwPinVal = GET_BIT(PINC.Byte,Loc_u8PinId);
+			break;
+		case 3:
+			*Copy_u8PtrSwPinVal = GET_BIT(PIND.Byte,Loc_u8PinId);
+			break;
+
+		default:
+			Loc_u8FuncReturn = RT_ERROR;
+			break;
+		}
 	}
 
-	return Loc_u8PinVal;
+	return Loc_u8FuncReturn;
 }
 
 u8 Dio_u8TglPinVal(u8 Copy_u8SwPinId)

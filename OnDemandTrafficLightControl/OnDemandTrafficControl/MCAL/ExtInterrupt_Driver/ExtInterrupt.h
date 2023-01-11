@@ -20,9 +20,7 @@
 #define EXT_INT_u8FALLING_EDGE				(u8)3
 
 #define EXT_INT2_u8RISING_EDGE				(u8)0
-#define EXT_INT2_u8FALLING_EDGE				(u8)BIT_MASK_6
-
-
+#define EXT_INT2_u8FALLING_EDGE				(u8)BIT6
 
 void ExtIntr_vidInit(void);
 

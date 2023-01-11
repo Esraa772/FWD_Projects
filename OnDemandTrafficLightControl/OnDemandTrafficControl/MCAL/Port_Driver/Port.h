@@ -65,7 +65,7 @@ typedef enum{
 }Port_tenuPinDir;
 
 void Port_vid_Init(void);
-void Port_vidSetPinDir(Port_tenuPinId Copy_enuPinId,  Port_tenuPinDir Copy_enuPinDir);
-void Port_vidSetPinMode(Port_tenuPinId Copy_enupinId, Port_tenuPinMode Copy_enuPinMode);
+u8 Port_u8SetPinDir(Port_tenuPinId Copy_enuPinId,  Port_tenuPinDir Copy_enuPinDir);
+u8 Port_u8SetPinMode(Port_tenuPinId Copy_enupinId, Port_tenuPinMode Copy_enuPinMode);
 
 #endif /* PORT_INT_H_ */

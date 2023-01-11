@@ -49,7 +49,7 @@
 
 u8 Dio_u8SetPinVal(u8 Copy_u8SwPinId, u8 Copy_u8SwPinVal);
 
-u8 Dio_u8GetPinVal(u8 Copy_u8SwPinId);
+u8 Dio_u8GetPinVal(u8 Copy_u8SwPinId, u8 * Copy_u8PtrSwPinVal);
 
 u8 Dio_u8TglPinVal(u8 Copy_u8SwPinId);
 
